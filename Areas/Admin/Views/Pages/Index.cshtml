@@ -1,0 +1,100 @@
+﻿@using Microsoft.Owin.Security.DataHandler
+@model IEnumerable<DataLayer1.Page>
+
+@{
+    ViewBag.Title = "صفحه اصلی";
+}
+
+<h3>صفحه اصلی</h3>
+<hr/>
+<p>
+    <a href="@Url.Action("Create")" class="btn  btn-success ">ایجاد خبر</a>
+
+
+</p>
+@*<div class="form-group">
+        @Html.LabelFor(model => model.GroupID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("GroupID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.GroupID, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageCaption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Visit)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ShowinSlider)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="/PageImages/@item.ImageCaption" class="thumbnail" style="max-width: 120px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PageGroup.GroupTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Visit)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowinSlider)
+            </td>
+            <td>
+                @item.CreateDate.ToShamsi()
+            </td>
+            <td>
+
+                <a href="@Url.Action("Edit/"+item.PageID)" class="btn btn-warning">
+                    ویرایش خبر
+                </a> |
+
+
+                <a href="@Url.Action("Details/"+item.PageID)" class="btn btn-info">
+                    جزئیات خبر
+                </a> |
+
+                <a href="@Url.Action("Delete/"+item.PageID)" class="btn btn-danger">
+                    حذف خبر
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts
+{
+
+    <script>
+        $(function() {
+            $(".Hidelink").hide();
+            $("#Pages").addClass('active');
+            $("#Pagegroups").removeClass('active');
+        });
+    </script>
+}

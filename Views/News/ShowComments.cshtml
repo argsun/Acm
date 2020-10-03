@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DataLayer1.PageComment>
+
+@foreach (var item in Model)
+{
+    <li>
+       
+    <div>
+        <span> @item.Name </span>
+        <span> تاریخ ثبت نظر :  @item.CreateTime.ToShamsi() </span>
+    </div>
+        <h3 >
+            @item.Comment
+        </h3>
+           
+    </li>
+}

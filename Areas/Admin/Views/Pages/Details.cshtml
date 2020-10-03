@@ -1,0 +1,90 @@
+﻿@model DataLayer1.Page
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+    <h3>جزئیات</h3>
+    <hr />
+<div>
+  
+ 
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PageGroup.GroupTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageGroup.GroupTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd style="textalign:center">
+           @Html.Raw(Model.Text)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Visit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Visit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageCaption)
+        </dt>
+
+        <dd>
+            <img src="/PageImages/@Model.ImageCaption" class="thumbnail" id="Img" style="max-width: 120px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowinSlider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowinSlider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Model.CreateDate.ToShamsi()
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش خبر", "Edit", new { id = Model.PageID })
+   
+</p>
+
+
